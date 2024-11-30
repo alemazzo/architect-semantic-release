@@ -1,6 +1,7 @@
 package io.github.alemazzo.architect.semantic.release.execution
 
 import jakarta.inject.Singleton
+import java.io.File
 
 @Singleton
 open class BashCommandExecutor : CommandExecutor {
@@ -15,7 +16,7 @@ open class BashCommandExecutor : CommandExecutor {
 	private fun executeCommand(command: String, workingDir: String? = null): Pair<Int, String> {
 		val processBuilder = ProcessBuilder(command.splitToCommandParts())
 		if (workingDir != null) {
-			processBuilder.directory(java.io.File(workingDir))
+			processBuilder.directory(File(workingDir))
 		}
 		val process = processBuilder.start()
 		val result = process.inputStream.bufferedReader().readText()
