@@ -35,6 +35,6 @@ jobs:
       - name: Release
         run: |
           zip -r executable/semantic-release.zip executable
-          cp -r plugin/build/libs/architect-semantic-release-0.1.jar executable/architect-semantic-release.jar
+          cp -r plugin/build/libs/architect-semantic-release-0.1-all.jar executable/architect-semantic-release.jar
           cd executable && ./release
           
