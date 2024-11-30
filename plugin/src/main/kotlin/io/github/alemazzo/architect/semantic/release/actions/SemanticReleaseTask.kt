@@ -4,6 +4,7 @@ import io.github.alemazzo.architect.semantic.release.configuration.SemanticRelea
 import io.github.alemazzo.architect.semantic.release.execution.CommandExecutor
 import jakarta.inject.Singleton
 import picocli.CommandLine.Command
+import java.io.File
 
 @Singleton
 @Command(name = "release")
@@ -50,8 +51,16 @@ class SemanticReleaseTask(
 		// Execute the plugin
 		commandExecutor.execute(command, "$executablePath/executable")
 
-		// Remove the plugin executable tmp directory
-		commandExecutor.execute("rm -rf $executablePath")
+		while (File(executablePath).exists()) {
+			// Remove the plugin executable tmp directory
+			commandExecutor.execute("rm -rf $executablePath")
+			val deleted = !File(executablePath).exists()
+			if (deleted) {
+				break
+			}
+			println("Plugin executable tmp directory not removed, waiting a second to retry")
+			Thread.sleep(1000)
+		}
 
 		// Remove the tmp directory if it's empty
 		commandExecutor.execute("rmdir $tempDir")
