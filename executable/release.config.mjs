@@ -12,7 +12,7 @@ function AssetFile(path){
     }
 }
 
-config.plugins = config.plugins.filter(plugin => plugin !== "@semantic-release/changelog");
+config.plugins = config.plugins.filter(plugin => plugin !== "@semantic-release/changelog" && plugin !== "@semantic-release/npm");
 config.plugins.push(
     "@semantic-release/git",
     [
