@@ -17,7 +17,13 @@ class SemanticReleaseConfigurationFactory{
 			println("No semantic release configuration found")
 			return SemanticReleaseConfiguration()
 		}
-		return configurationParser.parse(file.readText()) ?: SemanticReleaseConfiguration()
+		val content = file.readText()
+		val parsed = configurationParser.parse<SemanticReleaseConfiguration>(content)
+		if (parsed == null) {
+			println("Error parsing semantic release configuration")
+			return SemanticReleaseConfiguration()
+		}
+		return parsed
 	}
 
 }

@@ -20,7 +20,7 @@ class SemanticReleaseTask(
 	private val url = "https://github.com/alemazzo/architect-semantic-release/releases/latest/download/semantic-release.zip"
 
 	override fun run() {
-		println("Releasing project with Semantic Release")
+		println("Releasing project with Semantic Release with configuration: $context")
 
 		// Check if the tmp directory exists and if not, create it
 		commandExecutor.execute("mkdir -p .architect/tmp")
