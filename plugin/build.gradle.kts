@@ -32,7 +32,7 @@ dependencies {
 
 
 application {
-    mainClass = "io.github.alemazzo.architect.semantic.release.SemanticReleaseCommand"
+    mainClass = "io.github.alemazzo.architect.semantic.release.SemanticReleaseLauncher"
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("21")
