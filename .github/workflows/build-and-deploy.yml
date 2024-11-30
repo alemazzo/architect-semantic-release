@@ -32,9 +32,10 @@ jobs:
 
       - run: ./architect init
 
-      - name: Release
+      - name: Prepare Release
         run: |
-          zip -r executable/semantic-release.zip executable
+          zip -r ./semantic-release.zip executable
           cp -r plugin/build/libs/architect-semantic-release-0.1-all.jar executable/architect-semantic-release.jar
-          cd executable && ./release
-          
+
+      - run: ./architect release
+
