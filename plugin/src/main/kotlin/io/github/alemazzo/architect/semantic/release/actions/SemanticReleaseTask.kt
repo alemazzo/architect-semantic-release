@@ -51,15 +51,18 @@ class SemanticReleaseTask(
 		// Execute the plugin
 		commandExecutor.execute(command, "$executablePath/executable")
 
+
+
 		while (File(executablePath).exists()) {
 			// Remove the plugin executable tmp directory
+			commandExecutor.execute("rm -rf $executablePath/executable")
 			commandExecutor.execute("rm -rf $executablePath")
-			val deleted = !File(executablePath).exists()
+			val deleted = !File(executablePath).exists() || !File("$executablePath/executable").exists()
 			if (deleted) {
+				println("Plugin executable tmp directory removed")
 				break
 			}
 			println("Plugin executable tmp directory not removed, waiting a second to retry")
-			Thread.sleep(1000)
 		}
 
 		// Remove the tmp directory if it's empty
