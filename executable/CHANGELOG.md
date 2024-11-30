@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/alemazzo/architect-semantic-release/compare/1.2.0...1.3.0) (2024-11-30)
+
+### Features
+
+* using PluggableCommand interface to handle arguments ([b32d5b9](https://github.com/alemazzo/architect-semantic-release/commit/b32d5b90183266736b48952c2ce120afc9be82ee))
+
 ## [1.2.0](https://github.com/alemazzo/architect-semantic-release/compare/1.1.0...1.2.0) (2024-11-30)
 
 ### Features
