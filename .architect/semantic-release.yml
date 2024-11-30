@@ -1,0 +1,5 @@
+assets:
+  - path: ./architect-semantic-release.jar
+    name: architect-semantic-release.jar
+  - path: ./semantic-release.zip
+    name: semantic-release.zip

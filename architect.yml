@@ -10,10 +10,3 @@ plugins:
     name: "architect-semantic-release"
     jar: "architect-semantic-release.jar"
     loadClass: "io.github.alemazzo.architect.semantic.release.SemanticReleaseRunner"
-
-semantic-release:
-  assets:
-    - path: ./plugin/build/libs/architect-semantic-release-0.1-all.jar
-      name: architect-semantic-release.jar
-    - path: ./semantic-release.zip
-      name: semantic-release.zip

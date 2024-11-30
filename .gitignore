@@ -22,3 +22,4 @@ out/
 *.env
 .vscode/
 *.zip
+tmp/

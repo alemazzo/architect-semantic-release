@@ -19,4 +19,5 @@ class SemanticReleaseConfigurationFactory{
 		}
 		return configurationParser.parse(file.readText()) ?: SemanticReleaseConfiguration()
 	}
+
 }
