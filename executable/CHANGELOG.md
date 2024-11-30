@@ -1,3 +1,13 @@
+## [2.0.0](https://github.com/alemazzo/architect-semantic-release/compare/1.4.0...2.0.0) (2024-11-30)
+
+### ⚠ BREAKING CHANGES
+
+* completed plugin
+
+### Features
+
+* completed plugin ([087a062](https://github.com/alemazzo/architect-semantic-release/commit/087a062729305b7b8f569cfb5928b472ac634e14))
+
 ## [1.4.0](https://github.com/alemazzo/architect-semantic-release/compare/1.3.0...1.4.0) (2024-11-30)
 
 ### Features
