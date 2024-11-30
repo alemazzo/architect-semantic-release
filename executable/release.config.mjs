@@ -12,17 +12,21 @@ function AssetFile(path){
     }
 }
 
-config.plugins = config.plugins
-    .filter(plugin => plugin !== "@semantic-release/changelog")
-    .filter(plugin => plugin !== "@semantic-release/npm")
-
-config.plugins.push(
+config.plugins = [
+    [
+        "@semantic-release/commit-analyzer", {
+            "preset": "conventionalcommits",
+            "presetConfig": {
+                "types": "*types"
+            },
+        }
+    ],
     "@semantic-release/git",
     [
         "@semantic-release/github",  {
             "assets": assetFiles.map(AssetFile)
         }
     ]
-)
+]
 
 export default config;
