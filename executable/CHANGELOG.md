@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/alemazzo/architect-semantic-release/compare/1.0.0...1.0.1) (2024-11-30)
+
+### Bug Fixes
+
+* stuff ([3048bce](https://github.com/alemazzo/architect-semantic-release/commit/3048bce0b20da483892bcfd47fa0ffdeb06cd790))
+
 ## 1.0.0 (2024-11-30)
 
 ### Features
