@@ -17,13 +17,13 @@ config.plugins = config.plugins
     .filter(plugin => plugin !== "@semantic-release/changelog")
     .filter(plugin => plugin !== "@semantic-release/release-notes-generator")
 
-config.plugins = [
+config.plugins.push(
     "@semantic-release/git",
     [
         "@semantic-release/github",  {
             "assets": assetFiles.map(AssetFile)
         }
     ]
-]
+)
 
 export default config;
