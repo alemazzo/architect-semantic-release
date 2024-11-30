@@ -5,8 +5,15 @@ import jakarta.inject.Singleton
 @Singleton
 open class BashCommandExecutor : CommandExecutor {
 
+	private fun String.splitToCommandParts(): List<String> {
+		val regex = Regex("""[^\s"']+|"([^"]*)"|'([^']*)'""")
+		return regex.findAll(this)
+			.map { it.groupValues[0].trim('"', '\'') }
+			.toList()
+	}
+
 	private fun executeCommand(command: String, workingDir: String? = null): Pair<Int, String> {
-		val processBuilder = ProcessBuilder(command.split(" "))
+		val processBuilder = ProcessBuilder(command.splitToCommandParts())
 		if (workingDir != null) {
 			processBuilder.directory(java.io.File(workingDir))
 		}
