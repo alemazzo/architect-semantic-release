@@ -7,7 +7,7 @@ plugins {
 }
 
 version = "0.1"
-group = "com.example"
+group = "io.github.alemazzo.architect.semantic.release"
 
 val kotlinVersion=project.properties.get("kotlinVersion")
 repositories {
@@ -15,6 +15,7 @@ repositories {
 }
 
 dependencies {
+    compileOnly("io.micronaut:micronaut-runtime")
     kapt("info.picocli:picocli-codegen")
     kapt("io.micronaut.serde:micronaut-serde-processor")
     implementation("info.picocli:picocli")
