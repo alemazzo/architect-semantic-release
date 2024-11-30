@@ -4,9 +4,12 @@ import io.micronaut.configuration.picocli.PicocliRunner
 import jakarta.inject.Singleton
 
 @Singleton
-object SemanticReleaseLauncher {
-	@JvmStatic
-	fun main(args: Array<String>) {
+class SemanticReleaseLauncher {
+	fun run(args: Array<String>) {
 		PicocliRunner.run(SemanticReleaseCommand::class.java, *args)
 	}
+}
+
+fun main(args: Array<String>) {
+	SemanticReleaseLauncher().run(args)
 }
