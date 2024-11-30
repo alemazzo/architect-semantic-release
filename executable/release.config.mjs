@@ -3,7 +3,7 @@ import fs from 'fs';
 
 const allFiles = fs.readdirSync('./') // Read current directory
 const requiredFiles = ['package.json', 'package-lock.json', 'release.config.mjs', 'release'];
-const ignoredFiles = ['.gitignore', 'README.md', 'node_modules', 'CHANGELOG.md'];
+const ignoredFiles = ['.gitignore', 'README.md', 'node_modules', 'CHANGELOG.md', 'default.DS_Store', '.DS_Store']
 const assetFiles = allFiles.filter(file => !requiredFiles.includes(file) && !ignoredFiles.includes(file));
 
 function AssetFile(path){
