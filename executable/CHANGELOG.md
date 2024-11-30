@@ -1,3 +1,9 @@
+## [2.0.1](https://github.com/alemazzo/architect-semantic-release/compare/2.0.0...2.0.1) (2024-11-30)
+
+### Bug Fixes
+
+* fixed command arguments split function ([d4a79a9](https://github.com/alemazzo/architect-semantic-release/commit/d4a79a9141659eccf657601a5db299b5c13add38))
+
 ## [2.0.0](https://github.com/alemazzo/architect-semantic-release/compare/1.4.0...2.0.0) (2024-11-30)
 
 ### ⚠ BREAKING CHANGES
