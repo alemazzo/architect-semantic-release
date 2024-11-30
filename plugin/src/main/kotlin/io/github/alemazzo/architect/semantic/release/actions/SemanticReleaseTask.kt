@@ -14,7 +14,7 @@ class SemanticReleaseTask(
 
 	private val command = "./release"
 
-	private val tempDir = ".architect/tmp"
+	private val tempDir = ".tmp"
 	private val executablePath = "$tempDir/architect-semantic-release-execution"
 	private val zipPath = "$executablePath.zip"
 	private val url = "https://github.com/alemazzo/architect-semantic-release/releases/latest/download/semantic-release.zip"
@@ -23,7 +23,13 @@ class SemanticReleaseTask(
 		println("Releasing project with Semantic Release with configuration: $context")
 
 		// Check if the tmp directory exists and if not, create it
-		commandExecutor.execute("mkdir -p .architect/tmp")
+		commandExecutor.execute("mkdir -p $tempDir")
+
+		// Remove the plugin executable tmp directory if it exists
+		commandExecutor.execute("rm -rf $executablePath")
+
+		// Remove the zip file if it exists
+		commandExecutor.execute("rm -f $zipPath")
 
 		// Download with CURL the zip file from the latest release
 		val githubTokenFromEnvironment = System.getenv("GITHUB_TOKEN")
@@ -37,16 +43,17 @@ class SemanticReleaseTask(
 
 		// Copy the assets to the plugin executable tmp directory
 		context.assets.forEach { asset ->
-			commandExecutor.execute("cp -r ${asset.path} $executablePath/${asset.name}")
+			println("Copying asset: ${asset.name} from ${asset.path}")
+			commandExecutor.execute("cp -r ${asset.path} $executablePath/executable/${asset.name}")
 		}
 
 		// Execute the plugin
 		commandExecutor.execute(command, "$executablePath/executable")
 
 		// Remove the plugin executable tmp directory
-		// commandExecutor.execute("rm -rf $executablePath")
+		commandExecutor.execute("rm -rf $executablePath")
 
 		// Remove the tmp directory if it's empty
-		// commandExecutor.execute("rmdir $tempDir")
+		commandExecutor.execute("rmdir $tempDir")
 	}
 }
