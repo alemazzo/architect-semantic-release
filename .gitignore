@@ -22,6 +22,8 @@ out/
 *.env
 .vscode/
 *.zip
+tmp
 tmp/
 .architect/tmp
+.tmp
 .tmp/
