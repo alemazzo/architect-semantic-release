@@ -37,5 +37,7 @@ jobs:
           zip -r ./semantic-release.zip executable
           cp -r plugin/build/libs/architect-semantic-release-0.1-all.jar executable/architect-semantic-release.jar
 
-      - run: ./architect release
+      - run: ./architect architect-semantic-release release
+        if: >-
+          !github.event.repository.fork
 
