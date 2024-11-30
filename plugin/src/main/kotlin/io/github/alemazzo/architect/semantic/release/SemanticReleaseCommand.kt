@@ -12,6 +12,7 @@ import picocli.CommandLine.Command
 )
 class SemanticReleaseCommand: Runnable {
 	override fun run() {
+		println("Semantic Release Command")
 		CommandLine.usage(this, System.out)
 	}
 }

@@ -1,19 +1,11 @@
 package io.github.alemazzo.architect.semantic.release
 
-import io.micronaut.configuration.picocli.PicocliRunner
-import jakarta.inject.Singleton
-
-interface MainCommand {
-	fun run(args: List<String>)
-}
-
-@Singleton
-class SemanticReleaseLauncher: MainCommand {
-	override fun run(args: List<String>) {
-		PicocliRunner.run(SemanticReleaseCommand::class.java, *args.toTypedArray())
+class SemanticReleaseLauncher {
+	companion object {
+		@JvmStatic
+		fun main(args: Array<String>) {
+			println("Semantic Release Launcher")
+			SemanticReleaseRunner().accept(null, args.toList())
+		}
 	}
-}
-
-fun main(args: Array<String>) {
-	SemanticReleaseLauncher().run(args.toList())
 }

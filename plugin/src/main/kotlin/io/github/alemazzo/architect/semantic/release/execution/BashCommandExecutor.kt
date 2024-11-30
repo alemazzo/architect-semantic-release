@@ -21,16 +21,16 @@ open class BashCommandExecutor : CommandExecutor {
 	}
 
 	private fun logBanner() {
-		val count = 1
-		for (i in 0..count) {
-			println("************************************")
-		}
+		println("************************************")
 	}
 
 	override fun execute(command: String, workingDir: String?): Boolean {
 		println("Executing architect: $command in $workingDir")
-		val (exitCode, _) = executeCommand(command, workingDir)
-		println("Command executed with exit code $exitCode")
+		val (exitCode, result) = executeCommand(command, workingDir)
+		if (exitCode != 0) {
+			println("Command failed with exit code $exitCode")
+			println("Command output: $result")
+		}
 		return exitCode == 0
 	}
 }
