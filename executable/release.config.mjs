@@ -35,5 +35,7 @@ export default {
         ['@semantic-release/github', {
             assets: assetFiles.map(AssetFile) // Attach assets to the GitHub release
         }],
+
+        '@semantic-release/git'
     ]
 };
