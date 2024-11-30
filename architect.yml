@@ -1,0 +1,6 @@
+name: "architect-semantic-release"
+description: "My project description"
+
+gradle:
+  projects:
+    - name: "plugin"

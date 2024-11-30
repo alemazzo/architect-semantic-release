@@ -21,3 +21,4 @@ out/
 !*gradle*wrapper*.jar
 *.env
 .vscode/
+*.zip
