@@ -26,7 +26,100 @@ export default {
     branches: ['main'], // Specify the branches for release
     plugins: [
         // Analyze commits using conventional commit rules
-        ['@semantic-release/commit-analyzer', { preset: 'conventionalcommits' }],
+        ['@semantic-release/commit-analyzer', {
+            preset: 'conventionalcommits',
+            releaseRules: [
+                {
+                    type: "*!",
+                    release: "major"
+                },
+                {
+                    type: "chore",
+                    scope: "api-deps",
+                    release: "minor"
+                },
+                {
+                    type: "chore",
+                    scope: "core-deps",
+                    release: "patch"
+                },
+                {
+                    type: "docs",
+                    release: "patch"
+                },
+                {
+                    type: "revert",
+                    release: "patch"
+                }
+            ],
+            presetConfig: {
+                types: [
+                    {
+                        type: "*!",
+                        section: "BREAKING CHANGES"
+                    },
+                    {
+                        type: "feat",
+                        section: "Features"
+                    },
+                    {
+                        type: "chore",
+                        scope: "api-deps",
+                        section: "Dependency updates"
+                    },
+                    {
+                        type: "chore",
+                        scope: "core-deps",
+                        release: "patch",
+                        section: "Dependency updates"
+                    },
+                    {
+                        type: "chore",
+                        scope: "deps",
+                        section: "Dependency updates"
+                    },
+                    {
+                        type: "fix",
+                        section: "Bug Fixes"
+                    },
+                    {
+                        type: "docs",
+                        section: "Documentation"
+                    },
+                    {
+                        type: "perf",
+                        section: "Performance improvements"
+                    },
+                    {
+                        type: "revert",
+                        section: "Revert previous changes"
+                    },
+                    {
+                        type: "test",
+                        section: "Tests"
+                    },
+                    {
+                        type: "ci",
+                        section: "Build and continuous integration"
+                    },
+                    {
+                        type: "build",
+                        section: "Build and continuous integration"
+                    },
+                    {
+                        type: "chore",
+                        section: "General maintenance"
+                    },
+                    {
+                        type: "style",
+                        section: "Style improvements"
+                    },
+                    {
+                        type: "refactor",
+                        section: "Refactoring"
+                    }
+                ]}
+        }],
 
         // Generate release notes from commits
         '@semantic-release/release-notes-generator',
