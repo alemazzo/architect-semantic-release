@@ -18,8 +18,8 @@ open class BashCommandExecutor : CommandExecutor {
 		if (workingDir != null) {
 			processBuilder.directory(File(workingDir))
 		}
+		processBuilder.redirectErrorStream(true)
 		val process = processBuilder.start()
-
 		val outputBuilder = StringBuilder()
 		val outputThread = Thread {
 			process.inputStream.bufferedReader().useLines { lines ->
