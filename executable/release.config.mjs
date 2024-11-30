@@ -23,7 +23,8 @@ const gitFolderPath = gitFolderPathRecursiveFromParent();
 
 // Semantic-release configuration
 export default {
-    branches: ['main'], // Specify the branches for release
+    tagFormat: '${version}',
+    branches: ['main'],
     plugins: [
         // Analyze commits using conventional commit rules
         ['@semantic-release/commit-analyzer', {
@@ -130,7 +131,7 @@ export default {
         }],
 
         ['@semantic-release/git', {
-            assets: false
+            assets: false,
             }
         ]
     ]
