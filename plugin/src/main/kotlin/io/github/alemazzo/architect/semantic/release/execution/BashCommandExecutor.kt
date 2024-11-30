@@ -19,17 +19,26 @@ open class BashCommandExecutor : CommandExecutor {
 			processBuilder.directory(File(workingDir))
 		}
 		val process = processBuilder.start()
-		val result = process.inputStream.bufferedReader().readText()
-		logBanner()
-		println("************ Command output ************")
-		result.lines().forEach { println(it) }
-		println("******** End of architect output *********")
-		logBanner()
-		return Pair(process.waitFor(), result)
-	}
 
-	private fun logBanner() {
-		println("************************************")
+		val outputBuilder = StringBuilder()
+		val outputThread = Thread {
+			process.inputStream.bufferedReader().useLines { lines ->
+				lines.forEach { line ->
+					println(line) // Optionally log each line
+					outputBuilder.appendLine(line)
+				}
+			}
+		}
+		outputThread.start()
+
+		// Wait for the process to complete
+		val exitCode = process.waitFor()
+
+		// Ensure the output thread has finished processing
+		outputThread.join()
+
+		val result = outputBuilder.toString()
+		return Pair(exitCode, result)
 	}
 
 	override fun execute(command: String, workingDir: String?): Boolean {
