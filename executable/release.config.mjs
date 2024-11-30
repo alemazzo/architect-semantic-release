@@ -11,6 +11,16 @@ function AssetFile(path) {
     return { path };
 }
 
+const gitFolderPathRecursiveFromParent = (path = '') => {
+    if (fs.existsSync(`${path}.git`)) {
+        return './';
+    } else {
+        return gitFolderPathRecursiveFromParent(`${path}../`);
+    }
+}
+
+const gitFolderPath = gitFolderPathRecursiveFromParent();
+
 // Semantic-release configuration
 export default {
     branches: ['main'], // Specify the branches for release
@@ -21,20 +31,9 @@ export default {
         // Generate release notes from commits
         '@semantic-release/release-notes-generator',
 
-        // Generate/update the CHANGELOG.md file
-        // ['@semantic-release/changelog', {
-        //    changelogFile: 'CHANGELOG.md'
-        // }],
-
         // Create GitHub releases with assets
         ['@semantic-release/github', {
             assets: assetFiles.map(AssetFile) // Attach assets to the GitHub release
         }],
-
-        // Commit updated files (e.g., CHANGELOG.md)
-        ['@semantic-release/git', {
-            assets: [],
-            message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
-        }]
     ]
 };
